@@ -1,4 +1,4 @@
-const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 //let tablaBody = document.querySelector('#tablabody');
 let articulosCartas = document.querySelector('#cartas');
 let totalCarritoElement = document.querySelector('#totalCarrito');
@@ -10,11 +10,12 @@ let numeroIcon = document.querySelector('#numero')
 
 for (const producto of productos){
     articulosCartas.innerHTML += `
-    <div class="card "  style="width: 18rem;">
+    <div class="card"  style="width: 18rem;">
+    <img src=${producto.foto} class="card-img-top" alt="...">
     <div class="card-body">
         <h5 class="card-title">${producto.nombre}</h5>
         <p class="card-text">Precio $ ${producto.precio}</p>
-        <button id=${producto.id} class="btn btn-primary compra">Comprar</button>
+        <button id=${producto.id} class="btn btn-primary compra boton-agregar">Comprar</button>
     </div>
     </div>
     `;
@@ -32,7 +33,7 @@ for (const boton of botones) {
 
 function sumarCarro(prod) {
     carrito.push(prod);
-    numeroIcon.innerHTML = `🛒${carrito.length}`;
+    numeroIcon.innerHTML = `${carrito.length}`;
     document.querySelector('#tablabody').innerHTML += `
     <tr>
         <td>${prod.id}</td>
@@ -77,7 +78,7 @@ function calcularTotalCarrito() {
   
 function actualizarTotalCarrito() {
     let totalCarrito = calcularTotalCarrito();
-    totalCarritoElement.innerText = `Total: $${totalCarrito}`;
+    totalCarritoElement.innerText = `Total: USD$${totalCarrito}`;
 }
 
 
@@ -103,7 +104,7 @@ finalizarBtn.onclick = () => {
     //vaciar carrito
     carrito = [];
     document.querySelector('#tablabody').innerHTML = ''
-    numeroIcon.innerHTML = `🛒${carrito.length}`;
-    document.querySelector('#totalCarrito').innerText = `Total: $ `;
+    numeroIcon.innerHTML = `${carrito.length}`;
+    document.querySelector('#totalCarrito').innerText = `Total: USD$ `;
     
 }

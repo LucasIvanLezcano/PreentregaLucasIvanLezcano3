@@ -1,8 +1,50 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
 
+:root {
+    --clr-main: #eb1b1b;
+    --clr-main-dark: #3c60c2;
+    --clr-main-light:black;
+    --clr-white: #fffffe;
+    --clr-light: #ffd6e3;
+}
+
+
+
+
+
+
 .boton-carrito {
     background-color: transparent;
     color: black;
     
 
+}
+
+
+
+
+
+.boton-agregar{
+    border: 0;
+    padding: .4rem 1rem;
+    background-color: var(--clr-white);
+    color: var(--clr-main);
+    border-radius: 1.2rem;
+    text-transform: uppercase;
+    font-size: .9rem;
+    cursor: pointer;
+    border: 2px solid var(--clr-white);
+    transition: background-color 0.2s, color 0.2s ;
+}
+.botono-agregar:hover {
+    background: var(--clr-main);
+    color: var(--clr-white);
+}
+
+
+
+.carousel{
+    width: 100%;
+    height: 500px ;
+    
 }
