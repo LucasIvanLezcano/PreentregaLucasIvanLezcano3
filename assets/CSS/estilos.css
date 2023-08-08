@@ -36,10 +36,7 @@
     border: 2px solid var(--clr-white);
     transition: background-color 0.2s, color 0.2s ;
 }
-.botono-agregar:hover {
-    background: var(--clr-main);
-    color: var(--clr-white);
-}
+
 
 
 
