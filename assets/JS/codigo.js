@@ -17,7 +17,7 @@ for (const producto of productos){
     <div class="card-body">
         <h5 class="card-title">${producto.nombre}</h5>
         <p class="card-text">Precio $ ${producto.precio}</p>
-        <button id=${producto.id} class="btn btn-primary compra boton-agregar">Comprar</button>
+        <button id=${producto.id} class="btn2 btn-primary compra boton-agregar">Comprar</button>
     </div>
     </div>
     `;
@@ -123,3 +123,46 @@ finalizarBtn.onclick = () => {
 
 numeroCarrito()
 actualizarCarrito()
+
+
+const categoriaBtns = document.querySelectorAll('.categoria-btn');
+
+
+categoriaBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        const categoriaSeleccionada = btn.textContent.trim();
+
+        // Filtra los productos por la categoría seleccionada
+        const productosFiltrados = productos.filter((producto) => producto.categoria === categoriaSeleccionada);
+
+        // Limpia el contenido actual de la sección de productos
+        articulosCartas.innerHTML = '';
+
+    
+        for (const producto of productosFiltrados) {
+            articulosCartas.innerHTML += `
+            <div class="card"  style="width: 18rem;">
+                <img src=${producto.foto} class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${producto.nombre}</h5>
+                    <p class="card-text">Precio $ ${producto.precio}</p>
+                    <button id=${producto.id} class="btn2 btn-primary compra boton-agregar">Comprar</button>
+                </div>
+            </div>
+            `;
+        }
+
+        
+
+        // Actualiza los eventos click de los botones "Comprar" en los productos filtrados
+        const nuevosBotones = document.getElementsByClassName('compra');
+        for (const nuevoBoton of nuevosBotones) {
+            nuevoBoton.addEventListener('click', () => {
+                productoCarro = productos.find((prod) => prod.id == nuevoBoton.id);
+                sumarCarro(productoCarro);
+                guardarCarritoEnLocalStorage();
+                mostrarNotificacion(productoCarro.nombre);
+            });
+        }
+    });
+});
