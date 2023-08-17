@@ -2,7 +2,6 @@ let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 console.log,(carrito)
 
 let articulosCartas = document.querySelector('#cartas');
-
 let numeroIcon = document.querySelector('#numero')
 
 
@@ -40,25 +39,13 @@ function sumarCarro(prod) {
     carrito.push(prod);
     console.log(carrito)
     numeroCarrito()
-    actualizarCarrito()
-    actualizarTotalCarrito();
 }
 
 function guardarCarritoEnLocalStorage() {
     localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
-function actualizarCarrito(){
-    const tabla = document.querySelector('#tablabody')
-    tabla.innerHTML = '';
-    carrito.forEach((prod)=> {
-        const tr = document.createElement ('tr')
-        tr.innerHTML = `<td>${prod.id}</td>
-        <td>${prod.nombre}</td>
-        <td>${prod.precio}</td>`
-        tabla.appendChild(tr)
-    })
-}
+
 
 function mostrarNotificacion(producto) {
     Toastify({
@@ -78,18 +65,6 @@ function mostrarNotificacion(producto) {
 }
 
 
-function calcularTotalCarrito() {
-    let total = 0;
-    for (const producto of carrito) {
-        total += producto.precio;
-    }
-    return total;
-}
-  
-function actualizarTotalCarrito() {
-    let totalCarrito = calcularTotalCarrito();
-    totalCarritoElement.innerText = `Total: USD$${totalCarrito}`;
-}
 
 
 
