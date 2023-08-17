@@ -2,8 +2,7 @@ let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 console.log,(carrito)
 
 let articulosCartas = document.querySelector('#cartas');
-let tablaBody = document.querySelector('#tablabody');
-let totalCarritoElement = document.querySelector('#totalCarrito');
+
 let numeroIcon = document.querySelector('#numero')
 
 
@@ -93,37 +92,16 @@ function actualizarTotalCarrito() {
 }
 
 
-//finalizar compra
 
-let finalizarBtn = document.getElementById('finalizar');
 
-finalizarBtn.onclick = () => {
-    Toastify({
-        text: "Gracias por tu compra! Recibirás el pedido en los proximos dos dias habiles.",
-        duration: 2000,
-        gravity: 'top',
-        position: 'right',
-        close: true,
-        style: {
-            background: "linear-gradient(to right, #00b09b, #96c93d)",
-        },
-        offset: {
-            x: 150, 
-            y: 110 
-        },
-    }).showToast();
-    //vaciar carrito
-    carrito = [];
-    JSON.parse(localStorage.getItem('carrito')) || [];
-    document.querySelector('#tablabody').innerHTML = ''
-    numeroIcon.innerHTML = `${carrito.length}`;
-    document.querySelector('#totalCarrito').innerText = `Total: USD$ `;
-    
-}
 
-numeroCarrito()
-actualizarCarrito()
 
+
+
+
+
+
+//filtracion
 
 const categoriaBtns = document.querySelectorAll('.categoria-btn');
 
